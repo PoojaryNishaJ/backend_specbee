@@ -1,0 +1,15 @@
+custom_table_controller.example:
+  path: '/custom-table-controller/example'
+  defaults:
+    _title: 'Custom table task'
+    _controller: '\Drupal\custom_table_task\Controller\CustomTableTaskController::build'
+  requirements:
+    _permission: 'access content'
+
+custom_table_form.example:
+  path: '/custom-table-form/example'
+  defaults:
+    _title: 'Custom table form'
+    _form: 'Drupal\custom_table_task\Form\ExampleForm'
+  requirements:
+    _permission: 'access content'

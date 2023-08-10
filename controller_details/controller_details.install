@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Implement hook_schema().
+ */
+
+/**
+ * Creating table.
+ */
+function controller_details_schema() {
+  $schema['controller_form'] = [
+    'description' => 'Details of the node.',
+    'fields' => [
+      'id' => [
+        'description' => 'Holds the id',
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'title' => [
+        'description' => 'The title of the node.',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+      ],
+      'user' => [
+        'description' => 'Logged In User ',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}

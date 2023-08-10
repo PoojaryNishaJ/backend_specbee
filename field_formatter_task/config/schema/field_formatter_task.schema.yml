@@ -1,0 +1,7 @@
+field.formatter.settings.field_formatter_task_field_formatter:
+  type: mapping
+  label: field formatter formatter settings
+  mapping:
+    foo:
+      type: string
+      label: Foo

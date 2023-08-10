@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>email</th>
+      <th>Phone number</th>
+      <th>Gender</th>
+    </tr>
+  </thead>
+  {% for row in rows %}
+    <tr>
+      <td>{{ row.first_name }}</td>
+      <td>{{ row.last_name }}</td>
+      <td>{{ row.email }}</td>
+      <td>{{ row.phone_number }}</td>
+      <td>{{ row.gender  }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+
+
+
+

@@ -1,0 +1,5 @@
+name: 'Custom table task'
+type: module
+description: 'This is custom table task.'
+package: Custom
+core_version_requirement: ^10

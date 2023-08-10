@@ -1,0 +1,7 @@
+name: Title view mode
+description: Custom general module
+type: module
+package: Custom
+core_version_requirement: ^10
+
+#contains meta data of the custom module

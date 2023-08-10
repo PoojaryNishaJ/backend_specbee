@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Custom table task module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function custom_table_task_schema() {
+  $schema['custom_user_details'] = [
+    'description' => 'Contains details of the user',
+    'fields' => [
+      'id' =>[
+        'description' => 'Holds the id',
+        'type' => 'serial',
+        'not null' => true,
+        'unsigned' => true,
+      ],
+      'first_name' => [
+        'description' => 'Holds the first name',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => true,
+      ],
+      'last_name' => [
+        'description' => 'Holds the last name',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => true,
+      ],
+      'email' => [
+        'description' => 'Holds the email',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => true,
+      ],
+      'phone_number' => [
+        'description' => 'Holds the Phone number',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => true,
+      ],
+      'gender' => [
+        'description' => 'Holds the gender',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => true,
+      ],
+    ],
+    'primary key' => ['id'],
+    ];
+    return $schema;
+}
+
+

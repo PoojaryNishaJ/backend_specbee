@@ -1,0 +1,7 @@
+mail_task.settings:
+  path: '/admin/config/system/mail'
+  defaults:
+    _title: 'Settings'
+    _form: 'Drupal\mail_task\Form\MailForm'
+  requirements:
+    _permission: 'administer site configuration'

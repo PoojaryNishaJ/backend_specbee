@@ -1,0 +1,5 @@
+name: 'mail_task'
+type: module
+description: 'This is a mail task.'
+package: Custom
+core_version_requirement: ^10

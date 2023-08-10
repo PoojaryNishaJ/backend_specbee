@@ -1,0 +1,8 @@
+# Schema for the configuration files of the Mail task module.
+mail_task.settings:
+  type: config_object
+  label: 'Mail task settings'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

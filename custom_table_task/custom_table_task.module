@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Custom table task module.
+ */
+
+/**
+ * Implementation of hook_theme().
+ */
+function custom_table_task_theme() {
+  return [
+    'new_table' => [
+      'variables' => [
+        'rows' => '',
+      ],
+    ],
+  ];
+}
