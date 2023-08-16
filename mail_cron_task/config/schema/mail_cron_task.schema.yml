@@ -1,0 +1,8 @@
+# Schema for the configuration files of the Mail cron task module.
+mail_cron_task.settings:
+  type: config_object
+  label: 'Mail cron task settings'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

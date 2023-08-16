@@ -1,0 +1,5 @@
+access_controller.settings:
+  title: Settings
+  parent: system.admin_config_system
+  route_name: access_controller.settings
+  weight: 10

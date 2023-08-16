@@ -1,0 +1,7 @@
+name: 'Access Controller'
+type: module
+description: 'Provides access control based on selected roles and content types.'
+package: Custom
+core_version_requirement: ^10
+dependencies:
+  - drupal:field_ui

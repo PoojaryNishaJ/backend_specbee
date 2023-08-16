@@ -1,0 +1,7 @@
+mail_cron_task.settings:
+  path: '/admin/config/system/settings-cron-mail'
+  defaults:
+    _title: 'Settings'
+    _form: 'Drupal\mail_cron_task\Form\SettingsForm'
+  requirements:
+    _permission: 'administer site configuration'
