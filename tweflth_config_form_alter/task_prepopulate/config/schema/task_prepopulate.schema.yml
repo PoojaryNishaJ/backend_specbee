@@ -1,0 +1,8 @@
+# Schema for the configuration files of the Task prepopulate module.
+task_prepopulate.settings:
+  type: config_object
+  label: 'Task prepopulate settings'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

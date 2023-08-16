@@ -1,0 +1,23 @@
+newdropdown.example:
+  path: '/newdropdown/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\newdropdown\Controller\NewdropdownController::build'
+  requirements:
+    _permission: 'access content'
+
+newdropdown.settings_form:
+  path: '/admin/config/system/newdropdown'
+  defaults:
+    _title: 'newdropdown settings'
+    _form: 'Drupal\newdropdown\Form\SettingsForm'
+  requirements:
+    _permission: 'administer newdropdown configuration'
+
+dependent.form:
+  path: '/dropdown'
+  defaults:
+    _form: '\Drupal\newdropdown\Form\DropdownForm'
+    _title: 'Dependent Dropdown'
+  requirements:
+    _permission: 'access content'

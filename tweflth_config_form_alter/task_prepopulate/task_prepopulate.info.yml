@@ -1,0 +1,5 @@
+name: 'Task prepopulate'
+type: module
+description: 'This task is prepopulate title field, tags field and advanced value in the creation page.'
+package: Custom
+core_version_requirement: ^10

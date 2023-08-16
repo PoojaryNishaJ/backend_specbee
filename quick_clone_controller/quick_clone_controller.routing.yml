@@ -1,0 +1,7 @@
+quick_clone_controller.example:
+  path: '/quick-clone-controller/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\quick_clone_controller\Controller\QuickCloneControllerController::cloneNode'
+  requirements:
+    _permission: 'access content'

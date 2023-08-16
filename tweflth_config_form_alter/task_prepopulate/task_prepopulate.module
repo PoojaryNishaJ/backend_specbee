@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Task prepopulate module.
+ */
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for the node add/edit form.
+ */
+function task_prepopulate_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+
+  $config = \Drupal::config('task_prepopulate.settings');
+  $title = $config->get('title');
+  $advanced = $config->get('advanced');
+  //print_r($advanced); exit();
+  $term_id = $config->get('tags');// Convert the string to an array.
+  $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term_id);
+
+
+  $form['field_title']['widget'][0]['value']['#default_value'] = $title;
+
+  $form['field_advanced']['widget']['value']['#default_value'] = $advanced;
+
+  // print_r($tag_values); exit();
+  $form['field_tags']['widget']['target_id']['#default_value'] = $term;
+
+  }

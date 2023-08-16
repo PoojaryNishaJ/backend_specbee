@@ -1,0 +1,7 @@
+task_prepopulate.settings:
+  path: '/admin/config/system/task-prepopulate'
+  defaults:
+    _title: 'Task Prepopulate'
+    _form: 'Drupal\task_prepopulate\Form\SettingsForm'
+  requirements:
+    _permission: 'administer site configuration'

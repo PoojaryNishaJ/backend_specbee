@@ -1,0 +1,15 @@
+entity_refernce.controller:
+  path: '/controller-node-page'
+  defaults:
+    _controller: '\Drupal\entity_refernce\Controller\ControllerNode::nodeLoad'
+    _title: 'controller page'
+  requirements:
+    _permission: "access content"
+
+entity_refernce.controllertwo:
+  path: '/controller-refer-page'
+  defaults:
+    _controller: '\Drupal\entity_refernce\Controller\ControllerRefer::referNode'
+    _title: 'controller page'
+  requirements:
+    _permission: "access content"
