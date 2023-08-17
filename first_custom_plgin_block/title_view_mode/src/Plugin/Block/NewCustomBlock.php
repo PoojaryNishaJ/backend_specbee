@@ -80,4 +80,5 @@ class NewCustomBlock extends BlockBase {
     }
     return $build;
   }
+
 }

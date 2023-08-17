@@ -7,15 +7,31 @@ use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- *
+ * Defines an AccessControlService service.
  */
 class AccessControlService {
 
+  /**
+   * The entity type manager service.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
   protected EntityTypeManagerInterface $entityTypeManager;
+
+  /**
+   * The current user service.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
   protected AccountInterface $currentUser;
 
   /**
-   * The construct method.
+   * Constructs an AccessControlService object.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The entity type manager.
+   * @param \Drupal\Core\Session\AccountInterface $current_user
+   *   The current user.
    */
   public function __construct(EntityTypeManagerInterface $entityTypeManager, AccountInterface $current_user) {
     $this->entityTypeManager = $entityTypeManager;

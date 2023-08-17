@@ -4,7 +4,7 @@
  * @file
  * Primary module hooks for Task prepopulate module.
  */
-use Drupal\Core\Entity\EntityTypeManagerInterface;
+
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -15,10 +15,10 @@ function task_prepopulate_form_alter(array &$form, FormStateInterface $form_stat
   $config = \Drupal::config('task_prepopulate.settings');
   $title = $config->get('title');
   $advanced = $config->get('advanced');
-  //print_r($advanced); exit();
-  $term_id = $config->get('tags');// Convert the string to an array.
+  // print_r($advanced); exit();
+  // Convert the string to an array.
+  $term_id = $config->get('tags');
   $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term_id);
-
 
   $form['field_title']['widget'][0]['value']['#default_value'] = $title;
 
@@ -27,4 +27,4 @@ function task_prepopulate_form_alter(array &$form, FormStateInterface $form_stat
   // print_r($tag_values); exit();
   $form['field_tags']['widget']['target_id']['#default_value'] = $term;
 
-  }
+}

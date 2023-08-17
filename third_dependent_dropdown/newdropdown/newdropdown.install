@@ -1,7 +1,5 @@
 <?php
 
-use Drupal\Core\Database\Connection;
-
 /**
  * @file
  * Install, update and uninstall functions for the newdropdown module.
@@ -76,79 +74,78 @@ function newdropdown_schema() {
     ],
   ];
 
-
-   $schema['item'] = [
-     'description' => 'electronic items table',
-      'fields' => [
-        'id' => [
-          'type' => 'serial',
-          'unsigned' => TRUE,
-          'not null' => TRUE,
-        ],
-        'name' => [
-          'type' => 'varchar',
-          'length' => 255,
-          'not null' => TRUE,
-        ],
+  $schema['item'] = [
+    'description' => 'electronic items table',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
       ],
-      'primary key' => ['id'],
+      'name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
   ];
 
   $schema['model'] = [
-  'description' => 'model table',
-      'fields' => [
-        'id' => [
-          'type' => 'serial',
-          'unsigned' => TRUE,
-          'not null' => TRUE,
-        ],
-        'item_id' => [
-          'type' => 'int',
-          'not null' => TRUE,
-          'description' => 'Foreign key to item table',
-        ],
-        'name' => [
-          'type' => 'varchar',
-          'length' => 255,
-          'not null' => TRUE,
-        ],
+    'description' => 'model table',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
       ],
-      'primary key' => ['id'],
-      'foreign keys' => [
-        'item_id' => [
-          'table' => 'item',
-          'columns' => ['item_id' => 'id'],
-        ],
+      'item_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Foreign key to item table',
       ],
-    ];
+      'name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'foreign keys' => [
+      'item_id' => [
+        'table' => 'item',
+        'columns' => ['item_id' => 'id'],
+      ],
+    ],
+  ];
 
-    $schema['color'] = [
-      'description' => 'color table',
-      'fields' => [
-        'id' => [
-          'type' => 'serial',
-          'unsigned' => TRUE,
-          'not null' => TRUE,
-        ],
-        'model_id' => [
-          'type' => 'int',
-          'not null' => TRUE,
-          'description' => 'Foreign key to model table',
-        ],
-        'name' => [
-          'type' => 'varchar',
-          'length' => 255,
-          'not null' => TRUE,
-        ],
+  $schema['color'] = [
+    'description' => 'color table',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
       ],
-      'primary key' => ['id'],
-      'foreign keys' => [
-        'model_id' => [
-          'table' => 'model',
-          'columns' => ['model_id' => 'id'],
-        ],
+      'model_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Foreign key to model table',
       ],
-    ];
+      'name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'foreign keys' => [
+      'model_id' => [
+        'table' => 'model',
+        'columns' => ['model_id' => 'id'],
+      ],
+    ],
+  ];
 
   return $schema;
 }
@@ -186,7 +183,6 @@ function newdropdown_update_100701() {
     ->values(['tab'])
     ->execute();
 
-
   $connection->insert('model')
     ->fields(['item_id', 'name'])
     ->values([1, 'Moto g40'])
@@ -214,7 +210,6 @@ function newdropdown_update_100701() {
     ->values([3, 'Nokia T1O'])
     ->values([3, 'Nokia T11 tab'])
     ->execute();
-
 
   $connection->insert('color')
     ->fields(['model_id', 'name'])
@@ -277,4 +272,3 @@ function newdropdown_update_100701() {
 
     ->execute();
 }
-

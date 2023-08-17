@@ -65,9 +65,6 @@ class QuickCloneControllerController extends NodeController {
   /**
    * Provides the node submission form.
    *
-   * @param \Drupal\node\Entity\Node $node
-   *   The node entity to clone.
-   *
    * @return array
    *   A node submission form.
    */
@@ -81,7 +78,5 @@ class QuickCloneControllerController extends NodeController {
       throw new NotFoundHttpException();
     }
   }
-
-
 
 }

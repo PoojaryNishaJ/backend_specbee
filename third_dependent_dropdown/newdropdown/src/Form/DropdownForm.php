@@ -150,7 +150,6 @@ class DropdownForm extends FormBase {
     $query->condition('m.item_id', $item_id);
     $result = $query->execute();
 
-
     $model = [];
     foreach ($result as $row) {
       $model[$row->id] = $row->name;

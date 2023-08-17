@@ -11,6 +11,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class CustomTableTaskController extends ControllerBase {
 
+  /**
+   * Database.
+   *
+   * @var \Drupal\Core\Database\Connection
+   */
   protected $database;
 
   /**

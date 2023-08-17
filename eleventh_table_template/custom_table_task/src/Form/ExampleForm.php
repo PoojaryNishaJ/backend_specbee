@@ -96,13 +96,13 @@ class ExampleForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $values = $form_state->getValues();
-    $fields = array(
+    $fields = [
       'first_name' => $values['first_name'],
       'last_name' => $values['last_name'],
       'email' => $values['email'],
       'phone_number' => $values['phone_number'],
       'gender' => $values['gender'],
-    );
+    ];
     $this->database->insert('custom_user_details')->fields($fields)->execute();
   }
 

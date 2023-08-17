@@ -59,7 +59,8 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state): array {
     $config = $this->config('task_prepopulate.settings');
 
-    $term_id = $config->get('tags'); // Get the term ID from the configuration.
+    // Get the term ID from the configuration.
+    $term_id = $config->get('tags');
     $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($term_id);
 
     $form['title'] = [
@@ -84,7 +85,6 @@ class SettingsForm extends ConfigFormBase {
     // Debug: Print the term value.
     // print_r($term);
     // exit();
-
     return parent::buildForm($form, $form_state);
   }
 
@@ -103,4 +103,3 @@ class SettingsForm extends ConfigFormBase {
   }
 
 }
-

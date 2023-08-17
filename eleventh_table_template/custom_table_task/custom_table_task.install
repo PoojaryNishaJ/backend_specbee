@@ -12,46 +12,44 @@ function custom_table_task_schema() {
   $schema['custom_user_details'] = [
     'description' => 'Contains details of the user',
     'fields' => [
-      'id' =>[
+      'id' => [
         'description' => 'Holds the id',
         'type' => 'serial',
-        'not null' => true,
-        'unsigned' => true,
+        'not null' => TRUE,
+        'unsigned' => TRUE,
       ],
       'first_name' => [
         'description' => 'Holds the first name',
         'type' => 'varchar',
         'length' => 50,
-        'not null' => true,
+        'not null' => TRUE,
       ],
       'last_name' => [
         'description' => 'Holds the last name',
         'type' => 'varchar',
         'length' => 50,
-        'not null' => true,
+        'not null' => TRUE,
       ],
       'email' => [
         'description' => 'Holds the email',
         'type' => 'varchar',
         'length' => 50,
-        'not null' => true,
+        'not null' => TRUE,
       ],
       'phone_number' => [
         'description' => 'Holds the Phone number',
         'type' => 'varchar',
         'length' => 50,
-        'not null' => true,
+        'not null' => TRUE,
       ],
       'gender' => [
         'description' => 'Holds the gender',
         'type' => 'varchar',
         'length' => 50,
-        'not null' => true,
+        'not null' => TRUE,
       ],
     ],
     'primary key' => ['id'],
-    ];
-    return $schema;
+  ];
+  return $schema;
 }
-
-

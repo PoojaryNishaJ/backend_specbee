@@ -5,7 +5,6 @@
  * Primary module hooks for mail_task module.
  */
 
-
 use Drupal\Core\Entity\EntityInterface;
 
 /**

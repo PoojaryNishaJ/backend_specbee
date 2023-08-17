@@ -6,7 +6,7 @@
  */
 
 /**
- * Implementation of hook_theme().
+ * Implements hook_theme() for theme.
  */
 function custom_table_task_theme() {
   return [
