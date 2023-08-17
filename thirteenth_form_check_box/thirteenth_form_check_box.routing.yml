@@ -5,4 +5,3 @@ thirteenth_form_check_box.example:
     _form: 'Drupal\thirteenth_form_check_box\Form\ExampleForm'
   requirements:
     _permission: 'access content'
-

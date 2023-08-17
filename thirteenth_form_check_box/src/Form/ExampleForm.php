@@ -37,7 +37,8 @@ class ExampleForm extends FormBase {
    */
   public function __construct(LoggerInterface $logger, MessengerInterface $messenger) {
     $this->logger = $logger;
-    $this->messenger = $messenger; // Inject the messenger service
+    // Inject the messenger service.
+    $this->messenger = $messenger;
   }
 
   /**
@@ -78,9 +79,9 @@ class ExampleForm extends FormBase {
       '#title' => t('Last Name'),
       '#attributes' => ['id' => 'edit-last-name'],
       // '#states' => [
-      //   'visible' => [
-      //     ':input[name="no_last_name"]' => ['checked' => FALSE],
-      //   ],
+      // 'visible' => [
+      // ':input[name="no_last_name"]' => ['checked' => FALSE],
+      // ],
       // ],
     ];
 
