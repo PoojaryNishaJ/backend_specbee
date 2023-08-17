@@ -1,0 +1,15 @@
+thirteenth_form_check_box.example:
+  path: '/thirteenth-form-check-box/example'
+  defaults:
+    _title: 'Example'
+    _form: 'Drupal\thirteenth_form_check_box\Form\ExampleForm'
+  requirements:
+    _permission: 'access content'
+
+thirteenth_form_check_box2.example:
+  path: '/thirteenth-form-check-box/example2'
+  defaults:
+    _title: 'Example'
+    _form: 'Drupal\thirteenth_form_check_box\Form\CustomForm'
+  requirements:
+    _permission: 'access content'
