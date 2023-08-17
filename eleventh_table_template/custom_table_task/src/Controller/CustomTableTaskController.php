@@ -3,17 +3,37 @@
 namespace Drupal\custom_table_task\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Database\Connection;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Returns responses for Custom table task routes.
  */
 class CustomTableTaskController extends ControllerBase {
 
+  protected $database;
+
   /**
-  * Builds the response.
-  */
+   * Constructor for the controller.
+   */
+  public function __construct(Connection $database) {
+    $this->database = $database;
+  }
+
+  /**
+   * Creates an instance of the controller.
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('database')
+    );
+  }
+
+  /**
+   * Builds the response.
+   */
   public function build() {
-    $query = \Drupal::database()->select('custom_user_details', 'pp')
+    $query = $this->database->select('custom_user_details', 'pp')
       ->fields('pp')
       ->execute();
     $rows = [];
