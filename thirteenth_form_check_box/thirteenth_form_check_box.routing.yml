@@ -6,10 +6,3 @@ thirteenth_form_check_box.example:
   requirements:
     _permission: 'access content'
 
-thirteenth_form_check_box2.example:
-  path: '/thirteenth-form-check-box/example2'
-  defaults:
-    _title: 'Example'
-    _form: 'Drupal\thirteenth_form_check_box\Form\CustomForm'
-  requirements:
-    _permission: 'access content'

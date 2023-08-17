@@ -1,4 +1,4 @@
 js_lib:
-  version: 1.x
+  version: '1.0'
   js:
-    js/custom_form.js: {}
+    js/customform.js: {}

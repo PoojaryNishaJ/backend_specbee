@@ -37,8 +37,7 @@ class ExampleForm extends FormBase {
    */
   public function __construct(LoggerInterface $logger, MessengerInterface $messenger) {
     $this->logger = $logger;
-    // Inject the messenger service.
-    $this->messenger = $messenger;
+    $this->messenger = $messenger; // Inject the messenger service
   }
 
   /**
@@ -62,7 +61,7 @@ class ExampleForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
-    // $form['#attached']['library'][] = 'thirteenth_form_check_box/js_lib';
+    $form['#attached']['library'][] = "thirteenth_form_check_box/js_lib";
     $form['first_name'] = [
       '#type' => 'textfield',
       '#title' => t('First Name'),
@@ -77,11 +76,12 @@ class ExampleForm extends FormBase {
     $form['last_name'] = [
       '#type' => 'textfield',
       '#title' => t('Last Name'),
-      '#states' => [
-        'visible' => [
-          ':input[name="no_last_name"]' => ['checked' => FALSE],
-        ],
-      ],
+      '#attributes' => ['id' => 'edit-last-name'],
+      // '#states' => [
+      //   'visible' => [
+      //     ':input[name="no_last_name"]' => ['checked' => FALSE],
+      //   ],
+      // ],
     ];
 
     $form['actions'] = [
