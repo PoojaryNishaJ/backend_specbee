@@ -2,72 +2,63 @@
 
 /**
  * @file
- * Primary module hooks for mail cron module.
+ * Short description.
  */
 
 use Drupal\node\Entity\Node;
 
 /**
- * Implements hook_mail().
- */
-function mail_cron_task_mail($key, &$message, $params) {
-  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
-  switch ($key) {
-    case 'log_mail':
-      $message['from'] = \Drupal::config('system.site')->get('mail');
-      $message['subject'] = $params['subject'];
-      $message['body'][] = $params['text'];
-      break;
-  }
-}
-
-/**
  * Implements hook_cron().
  */
 function mail_cron_task_cron() {
-  $lastCronRun = \Drupal::state()->get('lastcronrun');
-  $currentTimestamp = \Drupal::time()->getCurrentTime();
+  $last_cron_run = \Drupal::state()->get('lastcronrun');
+  $current_timestamp = \Drupal::time()->getRequestTime();
 
-  if (empty($lastCronRun) || ($currentTimestamp - $lastCronRun) >= 1) {
+  if (empty($last_cron_run) || ($current_timestamp - $last_cron_run) >= 1) {
     $query = \Drupal::entityQuery('node')
+
       ->condition('type', 'logs')
-      ->condition('created', $lastCronRun, '>')
+      ->condition('created', $last_cron_run, '>')
       ->accessCheck(FALSE);
+    $nodes = $query->execute();
 
-    $nids = $query->execute();
+    foreach ($nodes as $node) {
 
-    foreach ($nids as $nid) {
-      $node = Node::load($nid);
-      $config = \Drupal::config('module_custom.settings');
-      $subject = $config->get('subject');
-      $text = $config->get('text')['value'];
+      $node = Node::load($node);
+      $token_content = ['node' => $node];
+      $config = \Drupal::config('mail_cron_task.settings.settings');
 
-      $tokenService = \Drupal::token();
-      $sub_message = $tokenService->replace($subject, ['node' => $node], ['clear' => TRUE]);
-      $sub_text = $tokenService->replace($text, ['node' => $node], ['clear' => TRUE]);
+      $token_service = \Drupal::token();
+      $subject = $token_service->replace($config->get('subject'), $token_content);
+      $message = $token_service->replace($config->get('message'), $token_content);
 
-      $params = [
-        'subject' => $sub_message,
-        'text' => $sub_text,
+      $mail_params = [
+        'subject' => $subject,
+        'body' => $message,
       ];
 
-      $module = 'mail_cron_task';
-      $key = 'log_mail';
-      $to = 'nisupojary1929@gmail.com';
-      $langcode = \Drupal::currentUser()->getPreferredLangcode();
+      $to = $node->get('field_email')->value;
+      $language_code = \Drupal::currentUser()->getPreferredLangcode();
 
-      $mailManager = \Drupal::service('plugin.manager.mail');
-      $send = TRUE;
-      $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
-
-      if ($result['result'] !== TRUE) {
-        \Drupal::messenger()->addMessage(t('There was a problem in sending the email.'), 'error');
-      }
-      else {
-        \Drupal::messenger()->addMessage(t('Email has been sent successfully.'), 'status');
-      }
+      \Drupal::service('plugin.manager.mail')->mail('mail_cron_task', 'node_creation', $to, $language_code, $mail_params);
     }
+  }
 
-    \Drupal::state()->set('lastcronrun', $currentTimestamp);
+  // Save the current timestamp as the last cron run time.
+  \Drupal::state()->set('lastcronrun', $current_timestamp);
+}
+
+/**
+ * Implements hook_mail().
+ */
+function mail_cron_task_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'node_creation':
+      $token_service = \Drupal::token();
+      $subject = $token_service->replace($params['subject'], ['node' => $params]);
+      $body = $token_service->replace($params['body'], ['node' => $params]);
+      $message['subject'] = $subject;
+      $message['body'][] = $body;
+      break;
   }
 }

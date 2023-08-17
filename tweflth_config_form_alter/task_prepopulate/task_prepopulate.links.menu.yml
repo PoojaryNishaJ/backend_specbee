@@ -1,5 +1,0 @@
-task_prepopulate.settings:
-  title: Settings
-  parent: system.admin_config_system
-  route_name: task_prepopulate.settings
-  weight: 10

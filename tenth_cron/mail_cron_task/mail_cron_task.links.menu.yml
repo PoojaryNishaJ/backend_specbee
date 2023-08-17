@@ -1,5 +1,0 @@
-mail_cron_task.settings:
-  title: Settings
-  parent: system.admin_config_system
-  route_name: mail_cron_task.settings
-  weight: 10
