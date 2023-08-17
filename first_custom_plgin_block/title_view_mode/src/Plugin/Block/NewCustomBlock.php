@@ -4,6 +4,8 @@ namespace Drupal\title_view_mode\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\node\Entity\Node;
 
 /**
@@ -18,10 +20,35 @@ use Drupal\node\Entity\Node;
 class NewCustomBlock extends BlockBase {
 
   /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * Constructs a NewCustomBlock object.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
+   */
+  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+    $this->entityTypeManager = $entity_type_manager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $container->get('entity_type.manager')
+    );
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function blockForm($form, FormStateInterface $form_state) {
-
     $form['node_title'] = [
       '#type' => 'entity_autocomplete',
       '#title' => $this->t('Title'),
@@ -44,7 +71,7 @@ class NewCustomBlock extends BlockBase {
    */
   public function build(): array {
     $node_id = $this->configuration['node_title'];
-    $node = \Drupal::entityTypeManager()->getStorage('node')->load($node_id);
+    $node = $this->entityTypeManager->getStorage('node')->load($node_id);
     $build = [];
     if ($node) {
       $build = [
@@ -52,7 +79,5 @@ class NewCustomBlock extends BlockBase {
       ];
     }
     return $build;
-
   }
-
 }
