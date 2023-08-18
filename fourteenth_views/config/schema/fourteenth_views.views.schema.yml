@@ -1,0 +1,7 @@
+views.field.fourteenth_views_view_field_quick_clone:
+  type: views.field.field
+  label: 'View field quick clone'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

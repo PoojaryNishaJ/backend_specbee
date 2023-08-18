@@ -1,0 +1,5 @@
+name: 'Fourteenth views'
+type: module
+description: 'Alter the views configuration'
+package: Custom
+core_version_requirement: ^10
