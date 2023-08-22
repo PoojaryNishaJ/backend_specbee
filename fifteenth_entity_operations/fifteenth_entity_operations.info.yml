@@ -1,0 +1,5 @@
+name: 'fifteenth_entity_operations'
+type: module
+description: 'To get the node title.'
+package: Custom
+core_version_requirement: ^10

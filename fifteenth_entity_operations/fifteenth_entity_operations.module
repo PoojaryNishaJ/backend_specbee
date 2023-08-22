@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for fifteenth_entity_operations module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_entity_operation().
+ */
+function fifteenth_entity_operations_entity_operation(EntityInterface $entity) {
+
+  $operations = [];
+
+  $operations['example'] = [
+    'title' => t('Node'),
+    'weight' => '100',
+    'url' => Url::fromRoute('fifteenth_entity_operations.example', ['node' => $entity->id()]),
+  ];
+
+  return $operations;
+}
