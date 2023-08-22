@@ -1,0 +1,5 @@
+name: 'Sixteenth cache task'
+type: module
+description: 'Task to invalidate the cache.'
+package: Custom
+core_version_requirement: ^10

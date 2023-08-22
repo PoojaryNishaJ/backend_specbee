@@ -1,0 +1,11 @@
+sixteenth_cache_task.example:
+  path: '/node/{node}/cache'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\sixteenth_cache_task\Controller\SixteenthCacheTaskController::build'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node:
+      type: entity:node

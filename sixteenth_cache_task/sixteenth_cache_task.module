@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Sixteenth cache task module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Cache\Cache;
+
+/**
+ * Implements hook_entity_presave() for nodes.
+ */
+function sixteenth_cache_task_entity_presave(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node') {
+    $cid = 'markfive:' . $entity->id();
+    Cache::invalidateTags([$cid]);
+  }
+}
